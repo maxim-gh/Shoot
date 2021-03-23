@@ -57,5 +57,4 @@ namespace _2
             Console.ReadKey();
         }
     }
-
 }
