@@ -5,6 +5,7 @@ using System.Threading;
 public class Queue
 {
     private Counter _first;
+    private Counter _last;
     public int Count { get; private set; }
     public Queue()
     {
@@ -13,9 +14,10 @@ public class Queue
             Value = 1,
             Next = null
         };
-        Count = 2;
+        Count = 1;
     }
-    public Counter GetElement(int index)
+
+    private Counter GetElement(int index)
     {
         var current = _first;
         for (var i = 1; i <= index; i++)
@@ -24,18 +26,31 @@ public class Queue
         }
         return current;
     }
+
+    public int Get(int index)
+    {
+        return GetElement(index).Value;
+    }
     public void Enqueue(int value)
     {
         var newElement = new Counter
         {
-            Next = null,
+            Next = _first,
             Value = value
         };
         _first = newElement;
         Count++;
     }
-    public void Dequeue()
+    public void Dequeue(int value)
     {
+        var delElement = new Counter
+        {
+            Next = null,
+            Value = value
+        };
+        var end = GetElement(Count);
+        end = delElement;
+        Count--;
 
     }
     public void Peek()
