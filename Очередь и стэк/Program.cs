@@ -13,14 +13,17 @@ namespace Очередь_и_стек
             Console.WriteLine("Все числа");
             for (int i = 1; i <= MyQ.Count; i++)
             {
-                Console.WriteLine(MyQ.Get(i));
+                Console.WriteLine(MyQ.GetElement(i));
             }
             MyQ.Enqueue(30);
             MyQ.Enqueue(40);
             Console.WriteLine("После изменения");
-            Console.WriteLine(MyQ.Get(2));
+            for (int i = 1; i <= MyQ.Count; i++)
+            {
+                Console.WriteLine(MyQ.GetElement(i));
+            }
 
-                Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }

@@ -12,14 +12,14 @@ public class Queue
         _first = new Counter
         {
             Value = 1,
-            Next = null
+            Next = _last
         };
         Count = 1;
     }
 
-    private Counter GetElement(int index)
+    public Counter GetElement(int index)
     {
-        var current = _first;
+        var current = _last;
         for (var i = 1; i <= index; i++)
         {
             current = current.Next;
@@ -27,31 +27,21 @@ public class Queue
         return current;
     }
 
-    public int Get(int index)
-    {
-        return GetElement(index).Value;
-    }
     public void Enqueue(int value)
     {
+
         var newElement = new Counter
         {
-            Next = _first,
+            Next = _last,
             Value = value
         };
-        _first = newElement;
+        _last = newElement;
         Count++;
     }
     public void Dequeue(int value)
     {
-        var delElement = new Counter
-        {
-            Next = null,
-            Value = value
-        };
-        var end = GetElement(Count);
-        end = delElement;
+        _first.Next = _first;
         Count--;
-
     }
     public void Peek()
     {
