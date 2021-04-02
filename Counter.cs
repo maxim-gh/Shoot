@@ -2,6 +2,6 @@
 
 public class Counter
 {
-    public Counter Next { get; set; }
+    public Counter Previous { get; set; }
     public int Value { get; set; }
 }
