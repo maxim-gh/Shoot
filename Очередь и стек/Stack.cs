@@ -2,7 +2,7 @@
 
 public class Stack
 {
-    private Counter _last;
+    private Element _last;
     public int Count { get; private set; }
 
     public Stack()
@@ -13,7 +13,7 @@ public class Stack
 
     public void Push(int value)
     {
-        var newElement = new Counter
+        var newElement = new Element
         {
             Previous = null,
             Value = value
@@ -22,18 +22,17 @@ public class Stack
         if (Count == 0)
         {
             _last = newElement;
-            Count++;
         }
         else
         {
             newElement.Previous = _last;
             _last = newElement;
-            Count++;
         }
+        Count++;
 
     }
 
-    public int Pop(int value)
+    public int Pop()
     {
         var deletedValue = _last.Value;
         _last = _last.Previous;
@@ -41,9 +40,9 @@ public class Stack
         return deletedValue;
     }
 
-    public int Peek(int value)
+    public int Peek()
     {
-        var deletedValue = _last.Value;
-        return deletedValue;
+        var viewValue = _last.Value;
+        return viewValue;
     }
 }

@@ -4,8 +4,8 @@ using System.Threading;
 
 public class Queue
 {
-    private Counter _first;
-    private Counter _last;
+    private Element _first;
+    private Element _last;
     public int Count { get; private set; }
     public Queue()
     {
@@ -16,7 +16,7 @@ public class Queue
 
     public void Enqueue(int value)
     {
-        var newElement = new Counter
+        var newElement = new Element
         {
             Previous = null,
             Value = value
@@ -26,26 +26,25 @@ public class Queue
         {
             _first = newElement;
             _last = _first;
-            Count++;
         }
         else
         {
             _last.Previous = newElement;
             _last = newElement;
-            Count++;
         }
+        Count++;
     }
-    public int Dequeue(int value)
+    public int Dequeue()
     {
         var deletedValue = _first.Value;
         _first = _first.Previous;
         Count--;
         return deletedValue;
     }
-    public int Peek(int value)
+    public int Peek() 
     {
-        var deletedValue = _first.Value;
-        return deletedValue;
+        var viewValue = _first.Value;
+        return viewValue;
 
     }
 }
