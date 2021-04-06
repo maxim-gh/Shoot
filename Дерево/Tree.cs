@@ -21,7 +21,7 @@ public class Tree
             Counter = 0,
             Value = value
         };
-        var d = true;
+        var checkCycle = true;
         if (Count == 0)
         {
             _current = newElement;
@@ -29,7 +29,7 @@ public class Tree
         }
         else
         {
-            while (d)
+            while (checkCycle)
             {
                 if (_current.Value < newElement.Value)
                 {
@@ -37,7 +37,7 @@ public class Tree
                     {
                         _current.Right = newElement;
                         _current = _current.Right;
-                        d = false;
+                        checkCycle = false;
                     }
                     else
                     {
@@ -50,7 +50,7 @@ public class Tree
                     {
                         _current.Left = newElement;
                         _current = _current.Left;
-                        d = false;
+                        checkCycle = false;
                     }
                     else
                     {
@@ -60,7 +60,7 @@ public class Tree
                 if (_current.Value == newElement.Value & Count != 0)
                 {
                     _current.Counter++;
-                    d = false;
+                    checkCycle = false;
                 }
             }
         }
@@ -72,15 +72,15 @@ public class Tree
     {
         checkElement = true;
         counter = 0;
-        var d = true;
-        while (d)
+        var checkCycle = true;
+        while (checkCycle)
         {
             if (value > _current.Value)
             {
                 if (_current.Right == null)
                 {
                     checkElement = false;
-                    d = false;
+                    checkCycle = false;
                 }
                 else
                 {
@@ -92,7 +92,7 @@ public class Tree
                 if (_current.Left == null)
                 {
                     checkElement = false;
-                    d = false;
+                    checkCycle = false;
                 }
                 else
                 {
@@ -102,7 +102,7 @@ public class Tree
             if (value == _current.Value)
             {
                 counter = _current.Counter;
-                d = false;
+                checkCycle = false;
             }
         }
     }
