@@ -13,7 +13,7 @@ namespace shoot
             var famas = new Famas();
 
 
-            var visitor = new Visitor[4]
+            var visitor = new Visitor[]
             {
                 new Military
                 {
